@@ -1,0 +1,405 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+  padding: 0;
+  margin: 0;
+}
+nav {
+  display: flex;
+  width: 100%;
+  padding: 10px 0;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  background-color: #fff;
+}
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+nav ul li {
+  margin: 0 10px;
+  line-height: 40px;
+}
+nav .logo {
+  padding-left: 50px;
+}
+nav .logo img {
+  display: block;
+}
+#hero {
+  padding-top: 50px;
+}
+.hero-container {
+  position: relative;
+}
+.hero-container img {
+  display: block;
+  margin: 0 auto;
+}
+.h2-title {
+  color: #fd4748;
+  text-align: center;
+  margin: 0 auto 20px auto;
+  font-size: 40px;
+  font-weight: bold;
+}
+.h2-title i {
+  padding-right: 10px;
+}
+.txt {
+  line-height: 1.6;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+#Overweight {
+  padding: 50px 0;
+}
+.Overweight-container {
+  width: 1100px;
+  margin: 0 auto;
+}
+.li-title {
+  list-style-type: none;
+  margin: 20px auto 40px auto;
+}
+.li-title li {
+  border-bottom: 2px solid #eee;
+  padding: 20px 0;
+}
+.li-title li h3 {
+  font-weight: 700;
+  font-size: 30px;
+}
+.li-title li p span {
+  font-size: 30px;
+  font-weight: bold;
+}
+.li-title li p {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+#service {
+  padding: 30px 0;
+  background-color: #ffdfdf;
+}
+.service-container {
+  width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.service-container h4 {
+  font-size: 25px;
+  color: #ff0000;
+  font-weight: bold;
+}
+#Redeem {
+  padding: 50px 0;
+  background-color: #efefef;
+}
+.Redeem-container {
+  width: 1100px;
+  margin: 0 auto;
+}
+.Redeem-position {
+  padding-top: 150px;
+}
+.Redeem-container ol {
+  margin-top: 20px;
+}
+.Redeem-container ol li p {
+  font-size: 25px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 5px;
+}
+.Redeem-container ol li {
+  font-size: 26px;
+  font-weight: bold;
+}
+.Redeem-container ol li:nth-child(3n) {
+  padding: 15px 0;
+}
+.Redeem-container ol li img {
+  width: 50px;
+}
+#note {
+  padding: 50px 0;
+}
+.note-container {
+  width: 1100px;
+  margin: 0 auto;
+}
+.note-container ul li {
+  padding: 10px 0;
+  font-size: 20px;
+}
+#footer {
+  background-color: #222629;
+  padding: 20px 0;
+}
+.footer-container {
+  width: 1100px;
+  margin: 0 auto;
+}
+.footer-flex {
+  display: flex;
+}
+.footer-flex img {
+  margin-right: 20px;
+}
+.footer-flex .a-link a {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  line-height: 80px;
+}
+.li-title li b {
+  font-size: 18px;
+}
+ul, ol {
+  width: 95%;
+  margin: 0 auto;
+}
+#start {
+  position: relative;
+  height: 850px;
+  background-color: #c9151e;
+  padding-top: 65px;
+  background-image: url("../img/lottery-bg.jpg");
+ background-repeat: no-repeat;
+ background-position:center top;
+ background-size: 100%;
+}
+.a-iRent {
+  text-align: center;
+}
+.a-iRent h4, .a-iRent a {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+.a-iRent h4, .a-iRent a {
+  font-size: 25px;
+  margin-bottom: 15px;
+  display: block;
+  text-decoration: none;
+}
+.iRent-Record {
+  position: absolute;
+  bottom: 66px;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+.iRent-Record a {
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #f19520;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.box {
+  width: 30rem;
+  height: 30rem;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.box .outer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+}
+.box .outer img {
+  width: 100%;
+  border: #f44540 2px solid;
+  border-radius: 266px 266px;
+  background-color: #f44540;
+}
+.box .inner {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-image: url(../img/arrow.png);
+  background-size: auto 10rem;
+  background-repeat: no-repeat;
+}
+.box .inner.start:active {
+  -webkit-transform: translate(-50%, -50%) scale(.95);
+  -moz-transform: translate(-50%, -50%) scale(.95);
+  -ms-transform: translate(-50%, -50%) scale(.95);
+  -o-transform: translate(-50%, -50%) scale(.95);
+  transform: translate(-50%, -50%) scale(.95);
+}
+.box .inner.start {
+  background-position: 0 0;
+}
+.box .inner.no-start {
+  background-position: -5rem 0;
+}
+.box .inner.completed {
+  background-position: -10rem 0;
+}
+/*
+.box-bg {
+  background-image: url("../img/zzsc-bottom.png");
+  width: 275px;
+  height: 131px;
+  position: relative;
+  top: 85%;
+  left: 20%;
+}
+*/
+.modal-content {
+  color: #fff;
+  font-weight: bold;
+  background-color: #f54053;
+}
+#start .modal-title {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+.table {
+  background-color: #eee;
+  border-radius: 5px;
+}
+.table thead th {
+  border-bottom: none;
+}
+.table td, .table th {
+  border-top: none;
+}
+.validCodeContent {
+  display: flex;
+}
+.valid-code {
+  width: 77%;
+}
+.imgValidCode {
+  width: 96px;
+  height: 39px;
+  background-image: url('assets/81edeab986183d3eeec4df4105aee9cb.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+@media (max-width: 768px) {
+  nav .logo {
+    padding-left: 20px;
+  }
+  .Overweight-container, .service-container, .Redeem-container, .note-container, .footer-container {
+    width: 100%;
+    padding: 0 15px;
+  }
+  .h2-title {
+    width: 100%;
+    font-size: 30px;
+  }
+  .footer-flex {
+    flex-wrap: wrap;
+  }
+  .recommend-container img {
+    display: block;
+    margin: 20px auto;
+  }
+  .li-title {
+    margin: 20px auto 0px auto;
+  }
+  .li-title li h3 {
+    font-size: 26px;
+  }
+  .Redeem-container ol {
+    margin-left: 20px;
+  }
+  .Redeem-container ol li:nth-child(2n) {
+    padding: 15px 0;
+  }
+  #start {
+    width: 100%;
+    height: 700px;
+	background-image: url("../img/m-lottery-bg.jpg");
+	background-position:right top;
+  }
+	
+
+  .box {
+    width: 21rem;
+    height: 21rem;
+	top:55%;
+  }
+  .box .inner {
+    width: 8rem;
+    height: 8rem;
+    background-size: auto 8rem;
+  }
+/*
+  .box-bg {
+    background-image: url(../img/m-zzsc-bottom.png);
+    width: 100%;
+    height: 103px;
+    background-repeat: no-repeat;
+    top: 85%;
+    background-position: center;
+    left: 0;
+    right: 0;
+  }
+*/
+  .li-title li img.img-app {
+    width: 100%;
+  }
+  .footer-flex a {
+    display: block;
+    text-align: center;
+  }
+  .footer-flex img {
+    margin-right: 0;
+  }
+	
+	
+.Redeem-container ol li p {
+    font-size: 20px;
+}
+	
+.li-title li p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+	
+.li-title li p span {
+    font-size: 24px;
+    font-weight: bold;
+}	
+	
+}

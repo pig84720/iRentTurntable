@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link href="css/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  window.HI = {
+      baseUrl: 'http://apyhfc07:8014/EasyrentService2019/',
+      captchaBaseUrl: 'http://apyhfc07:8014/EasyrentService2019/api/ValidateCode/ShowImg?mapid='
+  };
+</script>
+<title>iRent好友輪盤</title>
+</head>
+<body>
+<nav>
+	<div class="logo"><img src="img/logo.png"></div>
+	<ul id="userLogin">
+		<li><a href="javascript:;" data-toggle="modal" data-target="#exampleModalA" onclick="openLoginPopup()">會員登入</a></li>
+		<li><a href="javascript:;" onclick="HIHomePagePopUp()">會員註冊</a></li>
+  </ul>
+  <ul id="userLogout">
+		<li><a href="javascript:;" onclick="onUserLogout()">會員登出</a></li>
+	</ul>
+</nav>
+<section id="hero">
+  <div class="hero-container">
+    <div  id="a-bnt"> 
+		<img src="img/head.jpg?v=2" width="100%" class="d-none d-md-block">
+		<img src="img/m-head.jpg" width="100%" class="d-block d-md-none">
+	</div>
+  </div>
+</section>
+	
+<section id="start">
+  <div class="a-iRent">
+    <div id="loginPrompt" class="col-md-12" data-toggle="modal" data-target="#exampleModalA" onclick="openLoginPopup()"><a href="javascript:;">您好，請先登入iRent會員</a></div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabelA">登入iRent會員</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <div class="form-group">
+                <label for="Inputidcard">帳號</label>
+                <input type="idcard" class="form-control" id="Inputidcard" aria-describedby="emailHelp" placeholder="請輸入身分證字號">
+				      </div>
+              <div class="form-group">
+                <label for="InputPassword">密碼</label>
+                <input type="password" class="form-control" id="InputPassword" placeholder="請輸入密碼">
+              </div>
+              <div class="form-group">
+                <label for="ValidCode">驗證碼</label>
+                <div class="validCodeContent">
+                  <input type="text" class="form-control valid-code" id="ValidCode" placeholder="請輸入驗證碼">
+                  <div style="width: 23%; display: flex; justify-content: center;">
+                    <div class="imgValidCode" data-key="imgValidCode"></div>
+                  </div>
+                </div>
+              </div>
+              <div style="position: relative;">
+                <button class="btn btn-primary" onclick="loginClick()">會員登入</button>
+                <div style="position: absolute; right: 16px; top: -16px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 13px;">
+                  <div>看不清楚?</div>
+                  <div>點圖片換一張</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="lotteryIntroduc" class="col-md-12"><h4><span id="greetings"></span><br>您還有<span id="lotcount" class="text-warning ml-1 mr-1" style="font-size:35px "></span>抽獎機會</h4></div>
+  </div>
+  
+  <div id="box" class="box">
+	  <div class="box-bg"> </div>
+    <div class="outer KinerLottery KinerLotteryContent"><img src="img/zzsc.gif?v=3"></div>
+    <!-- 大专盘分为三种状态：活动未开始（no-start）、活动进行中(start)、活动结束(completed),可通过切换class进行切换状态，js会根据这3个class进行匹配状态 -->
+    <div class="inner KinerLotteryBtn start" data-toggle="modal" data-target="#exampleModalA" onclick="lotteryAction()"></div>
+  </div>
+	
+  <div id="recordSearch" class="iRent-Record" data-toggle="modal" data-target="#exampleModal" onclick="lotteryRecord()"> <a href="javascript:;">查看抽獎紀錄</a> </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">抽獎紀錄</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">抽獎時間</th>
+                <th scope="col">獎品</th>
+                <th scope="col">獎品序號</th>
+              </tr>
+            </thead>
+            <tbody id="prizeList">
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="right" data-html="true" title="兌換說明" 
+		  data-content="1.時數兌換方式 <br>
+						輸入時數：開啟iRent APP &#10132 左上角 ☰ &#10132【時數管理】 &#10132  右上角【輸入兌換碼】<br>
+						2.時數注意事項<br>① 需於2021/03/15前完成兌換。<br>②汽車時數汽機車皆可使用；機車時數僅機車可使用。<br>③兌換過後30天需使用完畢，恕不適用農曆春節期間。<br>
+						3.輸入時數後30天需使用完畢，未於時間內使用完畢之時數，不得要求補發剩餘免費時數。<br>
+						4.iPhone12及Airpods得獎者需於2021/03/15前聯繫客服專線，進行兌換獎品事宜，逾期視同放棄領獎資格。						
+						">兌獎說明</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>	
+	
+<section id="Overweight">
+  <div class="Overweight-container">
+    <h2 class="h2-title"><i class="fas fa-car"></i>iRent好友推薦計畫再<br>
+      加碼好友轉盤</h2>
+    <ul class="li-title">
+      <li>
+        <h3 class="text-danger">活動期間</h3>
+        <p>即日起 - 2021/02/28</p>
+      </li>
+      <li>
+        <h3 class="text-danger">活動辦法</h3>
+        <p><span>1.iRent好友推薦計畫</span><br>分享專屬序號給好友，好友成功加入iRent會員且成功兌換序號，您就可獲得免費租車30分鐘!好友完成首次租車，您可再獲得免費租車30分鐘! <br>
+		 <b class="text-danger">*專屬推薦序號查看開啟iRent APP &#10132  左上角 ☰ &#10132 【推薦朋友送時數】</b>
+		</p>
+		
+		<p class="mt-4"><span>2.加碼100%中獎好友轉盤</span><br>於活動期間， iRent會員只要成功推薦朋友成為iRent會員，即可參加好友轉盤活動，每成功推薦一名會員，就可獲得一次抽獎機會，推薦愈多人愈有機會獲得大獎!</p>
+      </li>
+      <li>
+        <h3 class="text-danger">抽獎獎項</h3>
+        <p>iPhone12、Airpods、汽車時數60分鐘、汽車時數30分鐘、機車時數20分鐘及機車時數10分鐘。</p>
+      </li>
+      <li>
+        <h3 class="text-danger">獲取機會方式</h3>
+        <p>新會員需於註冊完成後（包含駕照認證），輸入推薦人專屬序號，推薦人方可獲得抽獎機會，推薦人請至本活動頁登入iRent會員參與抽獎。</p>
+        <b class="text-danger">*好友推薦序號及iRent新會員活動免費時數序號僅能擇一輸入</b>
+	  </li>
+    </ul>  
+	  
+	  <div class="row text-center recommend-container">
+      <div class="col-12 col-md-4" data-aos="fade-up"> <img src="img/img03.png"> </div>
+      <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400"> <img src="img/img04.png"> </div>
+      <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="800"> <img src="img/img05.png"> </div>
+    </div>
+
+  </div>
+</section>
+		
+<section id="Redeem">
+  <div class="Redeem-container">
+    <h2 class="h2-title"><i class="fas fa-gift"></i>兌獎說明</h2>
+    <ol class="text-danger">
+      <li> 時數兌換方式
+        <p>輸入時數：開啟iRent APP➔左上角<img src="img/bar.png"> ➔【時數管理】➔右上角【輸入兌換碼】</p>
+      </li>
+      <li > 時數注意事項
+        <p>① 需於2021/03/15前完成兌換。</p>
+        <p>②汽車時數汽機車皆可使用；機車時數僅機車可使用。</p>
+        <p>③兌換過後30天需使用完畢，恕不適用農曆春節期間。</p>
+      </li>
+      <li> 輸入時數後30天需使用完畢，未於時間內使用完畢之時數，不得要求補發剩餘免費時數。 </li>
+	  <li>iPhone12及Airpods得獎者需於2021/03/15前聯繫客服專線，進行兌換獎品事宜，逾期視同放棄領獎資格。</li>
+    </ol>
+  </div>
+</section>
+	
+<section id="note">
+  <div class="note-container">
+    <h2 class="h2-title">注意事項</h2>
+    <ul>
+      <li>新用戶須於註冊完成後，成功輸入推薦人專屬序號，推薦人才可獲得一次抽獎機會。</li>
+      <li>好友推薦序號及iRent新會員活動免費時數序號僅能擇一輸入。</li>
+      <li>主辦單位將依您所留存之地址做贈品寄送(僅限台灣本島)，若因資料不全導致無法寄件成功，將視同放棄領獎權利。</li>
+      <li>依中華民國稅法規定，獎項金額若超過新臺幣1千元，獎項所得將列入個人年度綜合所得稅申報，故得獎人需依規定填寫並繳交相關資料方可領獎；若贈品所得總額超過新臺幣2萬元，需另先行繳納10%稅額。如不願意配合，則視為自動放棄得獎資格。</li>
+      <li>本活動獎項以和雲行動服務規劃的獎品為準，得獎資格不得轉讓他人，所有獎品以實物為準，得獎者不得以任何理由要求和雲行動服務更換贈品或折換現金。</li>
+      <li>中獎者同意主辦單位對獎項或獎品無需負擔產品責任。獎項或獎品一旦寄出或兌領後，若有遺失、遭冒領或遭竊等喪失占有之情形，主辦單位恕不負責補發。</li>
+      <li>所有偽造之資料、未於時間內回覆或未依本活動辦法填寫之個人資訊，皆視為該參加者放棄得獎權利，和雲行動服務不再進行候補得獎者的抽選。</li>
+      <li>參加本活動同時，即視為同意本活動之活動辦法與注意事項，和雲行動服務股份有限公司保留活動內容調整、取消、終止及最終解釋之權利。</li>
+    </ul>
+  </div>
+</section>
+	
+<section id="service">
+  <div class="service-container">
+    <h4>若對活動內容有其他疑問，可撥打和雲行動服務</h4>
+    <h4>24小時客服專線：0800-024-550 ，將有專人替您服務。</h4>
+  </div>
+</section>
+	
+<section id="footer">
+  <div class="footer-container">
+    <div class="footer-flex">
+      <div class="col-6 col-md-3"><a href="https://apps.apple.com/tw/app/irent%E8%87%AA%E5%8A%A9%E7%A7%9F%E8%BB%8A/id860552248" target="_blank"><img src="img/kv.png"></a></div>
+      <div class="col-6 col-md-3"><a href="https://play.google.com/store/apps/details?id=com.cht.easyrent.irent" target="_blank"><img src="img/foot_03.png"></a></div>
+      <div class="col-6 col-md-3"><a href="https://www.facebook.com/HiMSiRent/?hc_ref=ARTJASSLKMcLVTIPul2O410e7u2llF3WUVyXxDdqDI0FEKLP6QeRl1YtPXZrbPrn8S0&fref=nf&__xts__[0]=68.ARBZN2hVFdJO2BRSXuniW4P_dwrmOFAleB-Bou5_HDedeDVRgdTCaRRT4_u66JNZTpoSE3JOIlSnstNj_QzU5nCapQeHTfA6tRPGOJNOCtiv1sxEwYPvqgJDLtMKoOTGhrCGF4lqcbOnmOlN9VvD87q_2trjADT5qYZ5JP1GMcrQNnejGlzfvgr62spUUT52YuH0AA8r7U-7E1dy0Am8753F65RtCCOEI7d70xMibT0mtWGXkxCigqHJ2bZslePS0JGAGRYR7C4sBaZsXfC8iYUZZKMaX4E7mZztXJbnV0bBEGbrK869xOASrC4ifOO4Yt4KCz1FPdFSLe28crP6sUA5e9qUi-QEnhsrOpQOO8ExT2VPQRQTlCwciC8U49n3cq6Ot3iBjZdE8xa-9glD94WfRtpGj81mp0hMyDdPOR7KvXp3ogGAqSWW7YPVKBNuoqvvzoVpqyA2SMF3xivlLcnaUFTlJFGDKIC99qdHn5hiXgMCRlwGe0-BaQ" target="_blank"><img src="img/foot_06.png"></a></div>
+      <div class="a-link col-6 col-md-3"><a href="https://www.easyrent.com.tw/" target="_blank">回和運官方網站</a></div>
+    </div>
+  </div>
+</section>
+<script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/bootstrap.bundle.js"></script> 
+<script src="js/zepto.min.js"></script> 
+<script src="js/kinerLottery.js"></script> 
+<script src="js/GoTop.js"></script> 
+<script src="js/aos.js"></script> 
+<script src="js/main.js"></script>
+<script>
+  	/**
+	 * 根据转盘旋转角度判断获得什么奖品
+	 * @param deg
+	 * @returns {*}
+	 */
+	var whichAward = function(deg) {
+		if ((deg > 330 && deg <= 360) || (deg > 0 && deg <= 30)) { //iphone12
+			return "iphone12";
+		} else if ((deg > 30 && deg <= 90)) { //airpods
+			return "汽車時數30分鐘";
+		} else if (deg > 90 && deg <= 150) { //機車時數20分鐘
+			return "機車時數20分鐘";
+		} else if (deg > 150 && deg <= 210) { //汽車時數30分鐘
+			return "airpods";
+		} else if (deg > 210 && deg <= 270) { //機車時數10分鐘
+			return "機車時數10分鐘";
+		} else if (deg > 270 && deg <= 330) { //汽車時數60分鐘
+			return "汽車時數60分鐘";
+		}
+  }
+  
+  AOS.init();
+	
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+	
+</script>
+</body>
+</html>
